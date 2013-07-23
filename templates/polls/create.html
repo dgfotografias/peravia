@@ -1,0 +1,88 @@
+{% extends "polls/base.html" %}
+{% load i18n static polls_extra%}
+
+{% block extrastyle %}{{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static "admin/css/dashboard.css" %}" />
+    <link rel="stylesheet" type="text/css" href="{% static "admin/css/forms.css" %}" />
+{% endblock %}
+
+{% block title %}{{ encuesta.etiqueta }} | {{ encuesta.texto }}{% endblock %}
+
+{% block branding %}
+    <h1 id="site-name">{% trans 'Peravia administracion' %}</h1>
+{% endblock %}
+
+{% block extrahead %}
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
+{% block coltype %}colM{% endblock %}
+
+{% block bodyclass %}dashboard{% endblock %}
+
+{% if not is_popup %}
+    {% block breadcrumbs %}
+        <div class="breadcrumbs">
+            <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+            &rsaquo;
+            <a href="/polls/">Polls</a>
+            &rsaquo;
+            <a href="/encuestas/">{% trans 'Encuestar Clientes' %}</a>
+            &rsaquo;
+            {% trans 'Encuestar' %}
+        </div>
+    {% endblock %}
+{% endif %}
+
+{% block content %}
+    <div id="content-main">
+    <h1>&nbsp;</h1>
+        {%  if clientes|length == 0 %}
+        <p class="errornote">
+            {%   trans 'No hay clientes para encuestar' %}
+        </p>
+        {% else %}
+        <form action="{% url 'polls:create' encuesta.id client_id %}" method="POST" accept-charset="utf-8">{% csrf_token %}
+        <input type="hidden" name="encuesta_id" value="{{ encuesta.id }}">
+        <div class="module">
+            <div class="encuesta">
+                {{ encuesta.etiqueta }} &rsaquo; {{ encuesta.texto }}
+            </div>
+            <div class="form-row">
+                <div>
+                    <label for="cliente_id" style="font-weight: bold">{% trans 'Cliente' %}: </label>
+                    <select name="cliente_id" id="cliente_id">
+                        {% for cliente in clientes %}
+                            <option value="{{ cliente.id }}" {% if client_id == cliente.id %} selected="selected" {% endif %} >{{ cliente }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            {{ respuesta }}
+            {% for pregunta in encuesta.preguntas.all %}
+                <div class="pregunta">
+                    {{ pregunta.texto    }}
+                </div>
+                {% if pregunta.posibles.all|length > 0 %}
+                    <div class="form-row">
+                    <select name="{{ encuesta.id }}[{{ pregunta.id }}][choice]" {% if not pregunta.simple  %}multiple="multiple" size="{{ pregunta.posibles.count }}" {% endif %}>
+                        {% for posible in pregunta.posibles.all %}
+                            <option value="{{ posible.id }}" {% if elegidas|contiene:posible.id %}selected="selected" {% endif %}>{{ posible.texto }}</option>
+                        {% endfor %}
+                    </select>
+                    </div>
+                {% endif %}
+                {% if pregunta.posibles.all|length == 0 or pregunta.permite_add %}
+                    <div class="form-row">
+                    <textarea name="{{ encuesta.id }}[{{ pregunta.id }}][add]" >{{  textos|texto:pregunta.id }}</textarea>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+            <div class="submit-row">
+                <input type="submit" name="_save" class="default" value="Grabar">
+            </div>
+        </form>
+        {% endif %}
+    </div>
+{% endblock %}

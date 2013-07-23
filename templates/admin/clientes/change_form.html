@@ -1,0 +1,13 @@
+{% extends "admin/change_form.html" %}
+{% load i18n admin_urls %}
+<script>
+(function($) {
+    $(document).ready(function() {
+        $("#id_fnacimiento").datepicker( { dateFormat: 'yy-mm-dd',changeMonth: true,changeYear: true,yearRange :  'c-113:c' } );
+        //$("#id_codigo_postal").attr('disable','disable');
+
+
+   });
+
+})(django.jQuery);
+    </script>

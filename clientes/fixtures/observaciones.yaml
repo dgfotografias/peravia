@@ -1,0 +1,21 @@
+- model: clientes.observaciones
+  pk: 1
+  fields:
+    descripcion: Cliente fiel
+
+- model: clientes.observaciones
+  pk: 2
+  fields:
+    descripcion: Cliente dudoso
+
+
+- model: clientes.observaciones
+  pk: 3
+  fields:
+    descripcion: Abandono de producto
+
+
+- model: clientes.observaciones
+  pk: 4
+  fields:
+    descripcion: Abandono de servicio

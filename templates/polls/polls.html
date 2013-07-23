@@ -1,0 +1,55 @@
+{% extends "polls/base.html" %}
+{% load i18n static %}
+
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static "admin/css/dashboard.css" %}" />{% endblock %}
+
+{% block title %}{% trans 'Encuestas' %} | {% trans 'Peravia site admin' %}{% endblock %}
+
+{% block branding %}
+    <h1 id="site-name">{% trans 'Peravia administracion' %}</h1>
+{% endblock %}
+
+{% block extrahead %}
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
+{% block coltype %}colM{% endblock %}
+
+{% block bodyclass %}dashboard{% endblock %}
+
+{% if not is_popup %}
+    {% block breadcrumbs %}
+        <div class="breadcrumbs">
+            <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+            &rsaquo;
+            <a href="/polls/">Polls</a>
+            &rsaquo;
+            {% trans 'Encuestas Realizadas' %}
+        </div>
+    {% endblock %}
+{% endif %}
+
+{% block content %}
+    <div id="content-main">
+        <h1>&nbsp;</h1>
+        <div class="module">
+            <table>
+                <caption>
+                    <a title="{{ encuesta }}" class="section" href="">
+                        {{ encuesta }}: {{ encuesta.texto }}
+                    </a>
+                </caption>
+
+                <tbody>
+                {% for respuesta in respuestas %}
+                <tr>
+                    <th scope="row" >{{ respuesta.cliente }}</th>
+                    <td style="width: 100%">&nbsp;</td>
+                    <td><a class="changelink" href="{% url 'polls:create' encuesta.id  respuesta.cliente.id %}">{% trans 'Actualizar' %}</a></td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

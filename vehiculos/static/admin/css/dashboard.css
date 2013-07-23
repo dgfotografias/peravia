@@ -1,0 +1,65 @@
+/* DASHBOARD */
+
+.dashboard .module table th {
+    width: 100%;
+}
+
+.dashboard .module table td {
+    white-space: nowrap;
+}
+
+.dashboard .module table td a {
+    display: block;
+    padding-right: .6em;
+}
+
+/* RECENT ACTIONS MODULE */
+
+.module ul.actionlist {
+    margin-left: 0;
+}
+
+ul.actionlist li {
+    list-style-type: none;
+}
+
+ul.actionlist li.changelink {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+}
+
+.dashboard .module .encuesta{
+     background: url("../images/bcgk_table_header.png") repeat-x top center;
+     color: #ffffff;
+     height: 20px;
+     padding-top: 3px;
+     padding-left: 7px;
+     font-weight: bold;
+ }
+
+.dashboard .module .pregunta{
+    background-color: #D4D2D2;
+    height: 25px;
+    color: #444444;
+    padding-top: 7px;
+    padding-left: 7px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.dashboard .module .pregunta:last-child{
+    margin-bottom: 0px;
+}
+.dashboard .module .form-row{
+    padding: 5px;
+}
+
+.dashboard .module .form-row select{
+    min-width: 200px;
+}
+
+.dashboard .module .form-row textarea{
+    min-width: 300px;
+    resize: none;
+    height: 50px;
+}

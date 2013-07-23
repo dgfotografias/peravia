@@ -1,0 +1,85 @@
+
+.login #header, .login #content{
+    background-color: #fff;
+    margin: 0;
+}
+.login #header{
+    height: 180px;
+}
+.login #footer{
+    height: 0;
+}
+.login #branding{
+    background: transparent url("../images/bacgk_loggin_branding.png") repeat-x top left;
+    text-align: center;
+}
+.login #branding h1{
+    color: #ffffff;
+    height: 100%;
+    padding-top: 10px;
+    height: 40px;
+}
+.login #container {
+    border: none;
+    padding: 7px;
+    width: 330px;
+    min-width: 300px;
+    min-height: 300px;
+    margin: 100px auto;
+    background-image: url("../images/login_bcgk.png");
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
+
+.login #content-main {
+    width: 100%;
+    padding-bottom: 25px;
+}
+
+.login form {
+    margin-top: 1em;
+}
+
+.login .form-row {
+    padding: 4px 0;
+    float: left;
+    width: 100%;
+}
+
+.login .form-row label {
+    float: left;
+    width: 11em;
+    padding-right: 0.5em;
+    line-height: 2em;
+    text-align: right;
+    font-size: 1em;
+    color: #333;
+}
+
+.login .form-row #id_username, .login .form-row #id_password {
+    width: 14em;
+    height: 20px;
+}
+
+.login span.help {
+    font-size: 10px;
+    display: block;
+}
+
+.login .submit-row {
+    clear: both;
+    padding: 1em 0 0 11em;
+}
+.login .submit-row input[type="submit"]{
+    background: url("../images/bck_btn.png") repeat-x;
+    color: #ffffff;
+    font-weight: bold;
+    cursor: pointer;
+}
+.login .password-reset-link {
+    text-align: center;
+}
+.login .errornote, .login .errorlist{
+    margin: 0 10px !important;
+}
