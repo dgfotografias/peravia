@@ -32,11 +32,11 @@
 
         //cliente = $("#id_cliente option:selected").val();
         //alert(cliente);
-        if(cliente == 2){
+        if(cliente == 3){
            $(".form-row.field-neumatico_cliente").css("display","block");
            $(".form-row.field-lubricante_cliente").css("display","");
            $(".form-row.field-bateria_cliente").css("display","");
-        }else if(cliente == 3){
+        }else if(cliente == 5){
             $(".form-row.field-neumatico_cliente").css("display","");
             $(".form-row.field-lubricante_cliente").css("display","block");
             $(".form-row.field-bateria_cliente").css("display","");

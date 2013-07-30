@@ -1,3 +1,5 @@
+# -*- encoding: utf-8 -*-
+
 from django.db import models
 
 
@@ -71,11 +73,11 @@ class Vehiculo(models.Model):
     marca = models.ForeignKey(Marca)
     tipo = models.ForeignKey(Tipo)
     modelo = models.ForeignKey(Modelo)
-    anio = models.SmallIntegerField(max_length=4, choices=ANIO)
+    anio = models.SmallIntegerField(max_length=4, choices=ANIO,verbose_name='Año')
     color = models.ForeignKey(Color)
-    chassis = models.CharField(max_length=150)
+    chassis = models.CharField(max_length=17)
     faquisicion = models.DateField(auto_now_add=False, auto_now=False,auto_created=False, verbose_name='Fecha de adquisicion del vehiculo')
-    precio_cliente = models.FloatField(max_length=9, verbose_name='Precio otorgado al cliente')
+    precio_cliente = models.FloatField(max_length=9, verbose_name='Precio otorgado al cliente', null=True, blank=True)
     descuento = models.FloatField(max_length=9,verbose_name='Descuento aplicado (si aplica)', null=True, blank=True)
     #neumatico = models.ManyToManyField(Neumatico, null=True, blank=True, verbose_name='Neumaticos')
     #lubricante = models.ManyToManyField(Lubricante, null=True, blank=True, verbose_name='Lubricantes')

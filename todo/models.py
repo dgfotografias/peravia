@@ -15,6 +15,6 @@ class ToDo(models.Model):
         verbose_name = 'tarea'
 
     def __unicode__(self):
-        return self.title
+        return self.titulo
 
 
