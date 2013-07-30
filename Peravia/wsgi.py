@@ -14,6 +14,10 @@ framework.
 
 """
 import os
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
+
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "Peravia.settings")
 
